@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://nu1hxiobo0h6"
+
+[deps]
+
+files=["res://weather_data.0.translation", "res://weather_data.58.translation", "res://weather_data.13.translation", "res://weather_data.277.translation"]
+
+source_file="res://weather_data.csv"
+dest_files=["res://weather_data.0.translation", "res://weather_data.58.translation", "res://weather_data.13.translation", "res://weather_data.277.translation"]
+
+[params]
+
+compress=false
+delimiter=0

@@ -1,0 +1,92 @@
+[gd_scene load_steps=2 format=3 uid="uid://btsomtxs7uf37"]
+
+[ext_resource type="Script" path="res://human_population.gd" id="1_rgdmj"]
+
+[node name="HumanPopulation" type="Control" node_paths=PackedStringArray("population_size_spinbox", "food_consumption_spinbox", "water_consumption_spinbox", "oxygen_consumption_spinbox", "co2_production_spinbox", "urine_production_spinbox", "feces_production_spinbox", "daily_cost_spinbox", "daily_contribution_spinbox")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rgdmj")
+population_size_spinbox = NodePath("Population Size SpinBox")
+food_consumption_spinbox = NodePath("Food Consumption SpinBox")
+water_consumption_spinbox = NodePath("Water Consumption SpinBox")
+oxygen_consumption_spinbox = NodePath("Oxygen Consumption SpinBox")
+co2_production_spinbox = NodePath("CO2 Production SpinBox")
+urine_production_spinbox = NodePath("Urine Production SpinBox")
+feces_production_spinbox = NodePath("Feces Production SpinBox")
+daily_cost_spinbox = NodePath("Daily Cost SpinBox")
+daily_contribution_spinbox = NodePath("Daily Contribution SpinBox")
+
+[node name="Population Size SpinBox" type="SpinBox" parent="."]
+layout_mode = 2
+offset_right = 83.0625
+offset_bottom = 40.0
+value = 10.0
+
+[node name="Food Consumption SpinBox" type="SpinBox" parent="."]
+layout_mode = 2
+offset_left = 87.0
+offset_right = 170.063
+offset_bottom = 40.0
+max_value = 3000.0
+value = 1000.0
+
+[node name="Water Consumption SpinBox" type="SpinBox" parent="."]
+layout_mode = 2
+offset_left = 174.0
+offset_right = 257.063
+offset_bottom = 40.0
+value = 3.0
+
+[node name="Oxygen Consumption SpinBox" type="SpinBox" parent="."]
+layout_mode = 2
+offset_left = 261.0
+offset_right = 344.063
+offset_bottom = 40.0
+max_value = 600.0
+value = 400.0
+
+[node name="CO2 Production SpinBox" type="SpinBox" parent="."]
+layout_mode = 2
+offset_left = 348.0
+offset_right = 431.063
+offset_bottom = 40.0
+max_value = 600.0
+value = 450.0
+
+[node name="Urine Production SpinBox" type="SpinBox" parent="."]
+layout_mode = 2
+offset_left = 435.0
+offset_right = 518.063
+offset_bottom = 40.0
+
+[node name="Feces Production SpinBox" type="SpinBox" parent="."]
+layout_mode = 2
+offset_left = 522.0
+offset_right = 605.063
+offset_bottom = 40.0
+step = 0.1
+value = 0.3
+
+[node name="Daily Cost SpinBox" type="SpinBox" parent="."]
+layout_mode = 2
+offset_left = 633.0
+offset_right = 716.063
+offset_bottom = 40.0
+value = 15.0
+
+[node name="Daily Contribution SpinBox" type="SpinBox" parent="."]
+layout_mode = 2
+offset_left = 739.0
+offset_right = 822.063
+offset_bottom = 40.0
+value = 30.0
+allow_greater = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

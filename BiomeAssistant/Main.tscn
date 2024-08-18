@@ -1,0 +1,507 @@
+[gd_scene load_steps=17 format=3 uid="uid://napal3jrchkt"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_cwdgx"]
+[ext_resource type="Script" path="res://solar_panel.gd" id="2_cqgb0"]
+[ext_resource type="PackedScene" uid="uid://1gfropwtqfbn" path="res://GodotSky/Presets/default/GodotSky.tscn" id="2_uilnw"]
+[ext_resource type="Script" path="res://wind_turbine.gd" id="3_5g72a"]
+[ext_resource type="PackedScene" uid="uid://btsomtxs7uf37" path="res://human_population.tscn" id="3_m7yek"]
+[ext_resource type="Script" path="res://battery.gd" id="4_nmtpp"]
+[ext_resource type="Script" path="res://home_assistant_connector.gd" id="6_hie0o"]
+[ext_resource type="Script" path="res://ha_device_manager.gd" id="7_2rh1d"]
+[ext_resource type="Script" path="res://weather_manager.gd" id="9_o3abw"]
+[ext_resource type="Script" path="res://solar_calculator.gd" id="10_p6ixe"]
+[ext_resource type="Script" path="res://time_manager.gd" id="11_k2hqx"]
+[ext_resource type="Script" path="res://ui_manager.gd" id="12_ygnsm"]
+[ext_resource type="PackedScene" uid="uid://b2veutintrr77" path="res://mars_fbx_test_3.tscn" id="13_hory5"]
+[ext_resource type="Texture2D" uid="uid://eab6a7mwaqkt" path="res://Mars FBX test3_16.png" id="14_vqn4c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mv3s8"]
+albedo_texture = ExtResource("14_vqn4c")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_443jk"]
+
+[node name="Node" type="Node"]
+
+[node name="Main" type="Node" parent="." node_paths=PackedStringArray("weather_manager", "solar_calculator", "time_manager", "ui_manager", "solar_panel", "wind_turbine", "battery", "human_population", "ha_connector", "ha_device_manager", "godot_sky")]
+script = ExtResource("1_cwdgx")
+weather_manager = NodePath("UIManager/WeatherManager")
+solar_calculator = NodePath("UIManager/SolarCalculator")
+time_manager = NodePath("UIManager/TimeManager")
+ui_manager = NodePath("UIManager")
+solar_panel = NodePath("UIManager/SolarPanel")
+wind_turbine = NodePath("UIManager/WindTurbine")
+battery = NodePath("UIManager/Battery")
+human_population = NodePath("UIManager/HumanPopulation")
+ha_connector = NodePath("UIManager/HAConnector")
+ha_device_manager = NodePath("UIManager/HADeviceManager")
+godot_sky = NodePath("GodotSky")
+
+[node name="GodotSky" parent="Main" instance=ExtResource("2_uilnw")]
+simulateTime = false
+rateOfTime = 0.0
+skyRotation = 270.0
+cloudType = "2D Dynamic"
+cloudCoverage = 1.0
+moonShadow = false
+
+[node name="UIManager" type="Node" parent="Main" node_paths=PackedStringArray("temperature_label", "precipitation_label", "humidity_label", "windspeed_label", "wind_direction_label", "date_label", "hour_label", "year_label", "years_elapsed_label", "result_label", "total_rain_label", "total_solar_label", "total_wind_energy_label", "play_button", "pause_button", "reverse_button", "timescale_slider", "timeline_slider", "food_consumed_label", "water_consumed_label", "oxygen_consumed_label", "co2_produced_label", "urine_produced_label", "feces_produced_label", "budget_label", "longitude_spinbox", "latitude_spinbox", "orientation_spinbox", "tilt_spinbox", "efficiency_spinbox", "array_area_spinbox", "ambient_temp_spinbox", "temp_coefficient_spinbox", "rated_kw_spinbox", "rain_area_spinbox", "device_list", "placement_area", "connection_status", "error_popup")]
+script = ExtResource("12_ygnsm")
+temperature_label = NodePath("LabelContainer/Temperature Label")
+precipitation_label = NodePath("LabelContainer/Precipitation Label")
+humidity_label = NodePath("LabelContainer/Humidity Label")
+windspeed_label = NodePath("LabelContainer/Windspeed Label")
+wind_direction_label = NodePath("LabelContainer/Wind Direction Label")
+date_label = NodePath("LabelContainer/Date Label")
+hour_label = NodePath("LabelContainer/Hour Label")
+year_label = NodePath("LabelContainer/Year Label")
+years_elapsed_label = NodePath("LabelContainer/Years Elapsed Label")
+result_label = NodePath("LabelContainer/Result Label")
+total_rain_label = NodePath("LabelContainer/Total Rain Label")
+total_solar_label = NodePath("LabelContainer/Total Solar Label")
+total_wind_energy_label = NodePath("LabelContainer/Total Wind Energy Label")
+play_button = NodePath("ButtonContainer/Play Button")
+pause_button = NodePath("ButtonContainer/Pause Button")
+reverse_button = NodePath("ButtonContainer/Reverse Button")
+timescale_slider = NodePath("TimeScale")
+timeline_slider = NodePath("TimeLine")
+food_consumed_label = NodePath("LabelContainer/Food Consumed Label")
+water_consumed_label = NodePath("LabelContainer/Water Consumed Label")
+oxygen_consumed_label = NodePath("LabelContainer/Oxygen Consumed Label")
+co2_produced_label = NodePath("LabelContainer/CO2 Produced Label")
+urine_produced_label = NodePath("LabelContainer/Urine Produced Label")
+feces_produced_label = NodePath("LabelContainer/Feces Produced Label")
+budget_label = NodePath("LabelContainer/Budget Label")
+longitude_spinbox = NodePath("SpinboxContainer/Longitude SpinBox")
+latitude_spinbox = NodePath("SpinboxContainer/Latitude SpinBox")
+orientation_spinbox = NodePath("SpinboxContainer/Orientation SpinBox")
+tilt_spinbox = NodePath("SpinboxContainer/Tilt SpinBox")
+efficiency_spinbox = NodePath("SpinboxContainer/Efficiency SpinBox")
+array_area_spinbox = NodePath("SpinboxContainer/Area SpinBox")
+ambient_temp_spinbox = NodePath("SpinboxContainer/Ambient Temp SpinBox")
+temp_coefficient_spinbox = NodePath("SpinboxContainer/Temp Coefficient SpinBox")
+rated_kw_spinbox = NodePath("SpinboxContainer/RatedKW SpinBox")
+rain_area_spinbox = NodePath("SpinboxContainer/RainArea SpinBox")
+device_list = NodePath("HADeviceManager/device_list")
+placement_area = NodePath("PlacementArea")
+connection_status = NodePath("ConnectionStatus")
+error_popup = NodePath("ErrorPopup")
+
+[node name="Panel" type="Panel" parent="Main/UIManager"]
+offset_right = 289.0
+offset_bottom = 1074.0
+
+[node name="Panel2" type="Panel" parent="Main/UIManager"]
+offset_left = 1629.0
+offset_right = 1918.0
+offset_bottom = 1074.0
+
+[node name="LabelContainer" type="VBoxContainer" parent="Main/UIManager"]
+offset_left = 12.0
+offset_top = 21.0
+offset_right = 663.0
+offset_bottom = 617.0
+
+[node name="Temperature Label" type="Label" parent="Main/UIManager/LabelContainer"]
+layout_mode = 2
+text = "Temperature"
+
+[node name="Precipitation Label" type="Label" parent="Main/UIManager/LabelContainer"]
+layout_mode = 2
+text = "Precipitation"
+
+[node name="Humidity Label" type="Label" parent="Main/UIManager/LabelContainer"]
+layout_mode = 2
+text = "Humidity"
+
+[node name="Windspeed Label" type="Label" parent="Main/UIManager/LabelContainer"]
+layout_mode = 2
+text = "Windspeed"
+
+[node name="Wind Direction Label" type="Label" parent="Main/UIManager/LabelContainer"]
+layout_mode = 2
+text = "Wind Direction"
+
+[node name="Date Label" type="Label" parent="Main/UIManager/LabelContainer"]
+layout_mode = 2
+text = "Date"
+
+[node name="Hour Label" type="Label" parent="Main/UIManager/LabelContainer"]
+layout_mode = 2
+text = "Hour"
+
+[node name="Year Label" type="Label" parent="Main/UIManager/LabelContainer"]
+layout_mode = 2
+text = "Precipitation"
+
+[node name="Years Elapsed Label" type="Label" parent="Main/UIManager/LabelContainer"]
+layout_mode = 2
+text = "Years Elapsed "
+
+[node name="Result Label" type="Label" parent="Main/UIManager/LabelContainer"]
+layout_mode = 2
+text = "Result Label"
+
+[node name="Total Rain Label" type="Label" parent="Main/UIManager/LabelContainer"]
+layout_mode = 2
+text = "Total Rain "
+
+[node name="Total Solar Label" type="Label" parent="Main/UIManager/LabelContainer"]
+layout_mode = 2
+text = "Total Solar "
+
+[node name="Total Wind Energy Label" type="Label" parent="Main/UIManager/LabelContainer"]
+layout_mode = 2
+text = "Total Wind Energy"
+
+[node name="Food Consumed Label" type="Label" parent="Main/UIManager/LabelContainer"]
+layout_mode = 2
+text = "Food Consumed"
+
+[node name="Water Consumed Label" type="Label" parent="Main/UIManager/LabelContainer"]
+layout_mode = 2
+text = "Water Consumed"
+
+[node name="Oxygen Consumed Label" type="Label" parent="Main/UIManager/LabelContainer"]
+layout_mode = 2
+text = "Oxygen Consumed"
+
+[node name="CO2 Produced Label" type="Label" parent="Main/UIManager/LabelContainer"]
+layout_mode = 2
+text = "CO2 Produced"
+
+[node name="Urine Produced Label" type="Label" parent="Main/UIManager/LabelContainer"]
+layout_mode = 2
+text = "Urine Produced"
+
+[node name="Feces Produced Label" type="Label" parent="Main/UIManager/LabelContainer"]
+layout_mode = 2
+text = "Feces Produced"
+
+[node name="Budget Label" type="Label" parent="Main/UIManager/LabelContainer"]
+layout_mode = 2
+text = "Budget"
+
+[node name="ButtonContainer" type="HBoxContainer" parent="Main/UIManager"]
+offset_left = 824.0
+offset_top = 744.0
+offset_right = 1138.0
+offset_bottom = 802.0
+
+[node name="Play Button" type="Button" parent="Main/UIManager/ButtonContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Play"
+
+[node name="Pause Button" type="Button" parent="Main/UIManager/ButtonContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Pause"
+
+[node name="Reverse Button" type="Button" parent="Main/UIManager/ButtonContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Reverse"
+
+[node name="Button4" type="Button" parent="Main/UIManager/ButtonContainer"]
+visible = false
+layout_mode = 2
+text = "BUTTON"
+
+[node name="Button5" type="Button" parent="Main/UIManager/ButtonContainer"]
+visible = false
+layout_mode = 2
+text = "BUTTON"
+
+[node name="Button6" type="Button" parent="Main/UIManager/ButtonContainer"]
+visible = false
+layout_mode = 2
+text = "BUTTON"
+
+[node name="Button7" type="Button" parent="Main/UIManager/ButtonContainer"]
+visible = false
+layout_mode = 2
+text = "BUTTON"
+
+[node name="Button8" type="Button" parent="Main/UIManager/ButtonContainer"]
+visible = false
+layout_mode = 2
+text = "BUTTON"
+
+[node name="SpinboxContainer" type="VBoxContainer" parent="Main/UIManager"]
+offset_left = 1709.0
+offset_top = 46.0
+offset_right = 1840.0
+offset_bottom = 752.0
+
+[node name="Longitude" type="Label" parent="Main/UIManager/SpinboxContainer"]
+layout_mode = 2
+text = "Longitude"
+
+[node name="Longitude SpinBox" type="SpinBox" parent="Main/UIManager/SpinboxContainer"]
+layout_mode = 2
+min_value = -180.0
+max_value = 180.0
+step = 0.01
+value = -115.75
+
+[node name="Latitude" type="Label" parent="Main/UIManager/SpinboxContainer"]
+layout_mode = 2
+text = "Latitude"
+
+[node name="Latitude SpinBox" type="SpinBox" parent="Main/UIManager/SpinboxContainer"]
+layout_mode = 2
+min_value = -90.0
+max_value = 90.0
+step = 0.001
+value = 33.36
+
+[node name="Orientation" type="Label" parent="Main/UIManager/SpinboxContainer"]
+layout_mode = 2
+text = "Orientation"
+
+[node name="Orientation SpinBox" type="SpinBox" parent="Main/UIManager/SpinboxContainer"]
+layout_mode = 2
+min_value = -180.0
+max_value = 180.0
+value = 180.0
+
+[node name="Tilt" type="Label" parent="Main/UIManager/SpinboxContainer"]
+layout_mode = 2
+text = "Tilt"
+
+[node name="Tilt SpinBox" type="SpinBox" parent="Main/UIManager/SpinboxContainer"]
+layout_mode = 2
+value = 40.0
+
+[node name="Efficiency" type="Label" parent="Main/UIManager/SpinboxContainer"]
+layout_mode = 2
+text = "Efficiency"
+
+[node name="Efficiency SpinBox" type="SpinBox" parent="Main/UIManager/SpinboxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 0.15
+
+[node name="Area" type="Label" parent="Main/UIManager/SpinboxContainer"]
+layout_mode = 2
+text = "Area"
+
+[node name="Area SpinBox" type="SpinBox" parent="Main/UIManager/SpinboxContainer"]
+layout_mode = 2
+value = 24.0
+
+[node name="Ambient Temp" type="Label" parent="Main/UIManager/SpinboxContainer"]
+layout_mode = 2
+text = "Ambient Temp "
+
+[node name="Ambient Temp SpinBox" type="SpinBox" parent="Main/UIManager/SpinboxContainer"]
+layout_mode = 2
+value = 30.0
+
+[node name="Temp Coefficient" type="Label" parent="Main/UIManager/SpinboxContainer"]
+layout_mode = 2
+text = "Temp Coefficient"
+
+[node name="Temp Coefficient SpinBox" type="SpinBox" parent="Main/UIManager/SpinboxContainer"]
+layout_mode = 2
+
+[node name="RatedKW" type="Label" parent="Main/UIManager/SpinboxContainer"]
+layout_mode = 2
+text = "RatedKW"
+
+[node name="RatedKW SpinBox" type="SpinBox" parent="Main/UIManager/SpinboxContainer"]
+layout_mode = 2
+max_value = 10.0
+step = 0.1
+value = 1.0
+
+[node name="RainArea" type="Label" parent="Main/UIManager/SpinboxContainer"]
+layout_mode = 2
+text = "Rain Area"
+
+[node name="RainArea SpinBox" type="SpinBox" parent="Main/UIManager/SpinboxContainer"]
+layout_mode = 2
+max_value = 1000.0
+value = 10.0
+
+[node name="Latitude6" type="Label" parent="Main/UIManager/SpinboxContainer"]
+visible = false
+layout_mode = 2
+text = "Latitude"
+
+[node name="SpinBox11" type="SpinBox" parent="Main/UIManager/SpinboxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Latitude11" type="Label" parent="Main/UIManager/SpinboxContainer"]
+visible = false
+layout_mode = 2
+text = "Latitude"
+
+[node name="TimeScale" type="HSlider" parent="Main/UIManager"]
+offset_left = 771.0
+offset_top = 904.0
+offset_right = 1187.0
+offset_bottom = 959.0
+step = 0.1
+value = 5.0
+
+[node name="Label" type="Label" parent="Main/UIManager/TimeScale"]
+layout_mode = 0
+offset_top = -19.0
+offset_right = 411.0
+offset_bottom = 23.0
+text = "Timescale Slider"
+horizontal_alignment = 1
+
+[node name="TimeLine" type="HSlider" parent="Main/UIManager"]
+offset_left = 771.0
+offset_top = 841.0
+offset_right = 1187.0
+offset_bottom = 896.0
+
+[node name="Label2" type="Label" parent="Main/UIManager/TimeLine"]
+layout_mode = 0
+offset_top = -18.0
+offset_right = 411.0
+offset_bottom = 24.0
+text = "Timeline Slider"
+horizontal_alignment = 1
+
+[node name="ErrorPopup" type="AcceptDialog" parent="Main/UIManager"]
+
+[node name="PlacementArea" type="Control" parent="Main/UIManager"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ConnectionStatus" type="Label" parent="Main/UIManager"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="HumanPopulation" parent="Main/UIManager" instance=ExtResource("3_m7yek")]
+offset_left = 573.0
+offset_top = 981.0
+offset_right = 56.0
+offset_bottom = 401.0
+
+[node name="SolarPanel" type="Node" parent="Main/UIManager"]
+script = ExtResource("2_cqgb0")
+
+[node name="WindTurbine" type="Node" parent="Main/UIManager"]
+script = ExtResource("3_5g72a")
+height = 5.0
+
+[node name="Battery" type="Node" parent="Main/UIManager"]
+script = ExtResource("4_nmtpp")
+max_charge_rate = 4.0
+
+[node name="HADeviceManager" type="Node" parent="Main/UIManager" node_paths=PackedStringArray("ha_connector")]
+script = ExtResource("7_2rh1d")
+ha_connector = NodePath("../HAConnector")
+
+[node name="device_list" type="ItemList" parent="Main/UIManager/HADeviceManager"]
+visible = false
+offset_left = 14.0
+offset_top = 594.0
+offset_right = 218.0
+offset_bottom = 634.0
+
+[node name="HAConnector" type="Node" parent="Main/UIManager"]
+script = ExtResource("6_hie0o")
+ha_url = "ws://10.0.0.19:8123/api/websocket"
+ha_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhODQ0YzRjNTQ3MWU0NmY5OGIxM2ViY2I3N2E0OTg5MyIsImlhdCI6MTcyMzYxMDU3MCwiZXhwIjoyMDM4OTcwNTcwfQ.dH5Col4_MRUTptHUaoaBV-qStaynaL4lwsfccN3zstg"
+
+[node name="SolarCalculator" type="Node" parent="Main/UIManager"]
+script = ExtResource("10_p6ixe")
+
+[node name="TimeManager" type="Node" parent="Main/UIManager"]
+script = ExtResource("11_k2hqx")
+
+[node name="WeatherManager" type="Node" parent="Main/UIManager" node_paths=PackedStringArray("load_csv_button", "csv_file_dialog", "loaded_file_label")]
+script = ExtResource("9_o3abw")
+load_csv_button = NodePath("LoadCSV Button")
+csv_file_dialog = NodePath("FileDialog")
+loaded_file_label = NodePath("Current File Label")
+
+[node name="LoadCSV Button" type="Button" parent="Main/UIManager/WeatherManager"]
+offset_left = 21.0
+offset_top = 935.0
+offset_right = 131.0
+offset_bottom = 966.0
+text = "Load CSV File"
+
+[node name="FileDialog" type="FileDialog" parent="Main/UIManager/WeatherManager"]
+
+[node name="Current File Label" type="Label" parent="Main/UIManager/WeatherManager"]
+offset_left = 24.0
+offset_top = 968.0
+offset_right = 128.0
+offset_bottom = 991.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Main"]
+
+[node name="LineEdit" type="LineEdit" parent="Main"]
+visible = false
+offset_left = 12.0
+offset_top = 511.0
+offset_right = 219.0
+offset_bottom = 542.0
+text = "10.0.0.19:8123"
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="LineEdit2" type="LineEdit" parent="Main"]
+visible = false
+offset_left = 13.0
+offset_top = 550.0
+offset_right = 220.0
+offset_bottom = 581.0
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Main"]
+layer = -1
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Main/CanvasLayer"]
+offset_right = 1924.0
+offset_bottom = 1276.0
+
+[node name="SubViewport" type="SubViewport" parent="Main/CanvasLayer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="Main/CanvasLayer/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.785403, 0.618984, 0, -0.618984, 0.785403, 0, 22.2954, 13.2193)
+fov = 79.3
+
+[node name="Mars FBX test3" parent="." instance=ExtResource("13_hory5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0329, 0, -51.1639)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_mv3s8")
+mesh = SubResource("PlaneMesh_443jk")
+
+[connection signal="device_placed" from="Main/UIManager" to="Main" method="_on_ui_manager_device_placed"]
+[connection signal="pause_pressed" from="Main/UIManager" to="Main" method="_on_ui_manager_pause_pressed"]
+[connection signal="play_pressed" from="Main/UIManager" to="Main" method="_on_ui_manager_play_pressed"]
+[connection signal="reverse_pressed" from="Main/UIManager" to="Main" method="_on_ui_manager_reverse_pressed"]
+[connection signal="timeline_changed" from="Main/UIManager" to="Main" method="_on_ui_manager_timeline_changed"]
+[connection signal="timescale_changed" from="Main/UIManager" to="Main" method="_on_ui_manager_timescale_changed"]
+[connection signal="pressed" from="Main/UIManager/ButtonContainer/Play Button" to="Main/UIManager" method="_on_play_button_pressed"]
+[connection signal="pressed" from="Main/UIManager/ButtonContainer/Pause Button" to="Main/UIManager" method="_on_pause_button_pressed"]
+[connection signal="pressed" from="Main/UIManager/ButtonContainer/Reverse Button" to="Main/UIManager" method="_on_reverse_button_pressed"]
+[connection signal="energy_generated" from="Main/UIManager/SolarPanel" to="Main" method="_on_solar_panel_energy_generated"]
+[connection signal="energy_generated" from="Main/UIManager/WindTurbine" to="Main" method="_on_wind_turbine_energy_generated"]
+[connection signal="device_added" from="Main/UIManager/HADeviceManager" to="Main" method="_on_ha_device_manager_device_added"]
+[connection signal="device_removed" from="Main/UIManager/HADeviceManager" to="Main" method="_on_ha_device_manager_device_removed"]
+[connection signal="connected" from="Main/UIManager/HAConnector" to="Main" method="_on_ha_connector_connected"]
+[connection signal="data_received" from="Main/UIManager/HAConnector" to="Main" method="_on_ha_connector_data_received"]
+[connection signal="devices_received" from="Main/UIManager/HAConnector" to="Main" method="_on_ha_connector_devices_received"]
+[connection signal="disconnected" from="Main/UIManager/HAConnector" to="Main" method="_on_ha_connector_disconnected"]
+[connection signal="weather_data_load_failed" from="Main/UIManager/WeatherManager" to="Main" method="_on_weather_manager_weather_data_load_failed"]
+[connection signal="weather_data_loaded" from="Main/UIManager/WeatherManager" to="Main" method="_on_weather_manager_weather_data_loaded"]
